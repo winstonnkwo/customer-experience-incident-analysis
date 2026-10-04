@@ -1,0 +1,26 @@
+agent_id,agent_name,team,manager,experience_level,hire_date,shift
+1,Agent_01,Payments,Alice,Senior,2023-04-25,Morning
+2,Agent_02,Technical Support,Brian,Senior,2023-10-09,Morning
+3,Agent_03,Customer Success,Cynthia,Junior,2023-05-23,Night
+4,Agent_04,KYC & Verification,David,Junior,2024-11-23,Night
+5,Agent_05,VIP Support,Eva,Senior,2023-03-31,Night
+6,Agent_06,Payments,Alice,Mid,2023-02-02,Morning
+7,Agent_07,Technical Support,Brian,Junior,2023-08-12,Morning
+8,Agent_08,Customer Success,Cynthia,Senior,2024-09-08,Morning
+9,Agent_09,KYC & Verification,David,Senior,2023-07-23,Night
+10,Agent_10,VIP Support,Eva,Senior,2024-12-19,Night
+11,Agent_11,Payments,Alice,Mid,2023-08-14,Afternoon
+12,Agent_12,Technical Support,Brian,Senior,2023-10-12,Morning
+13,Agent_13,Customer Success,Cynthia,Junior,2024-12-15,Afternoon
+14,Agent_14,KYC & Verification,David,Mid,2023-10-12,Morning
+15,Agent_15,VIP Support,Eva,Junior,2025-02-20,Afternoon
+16,Agent_16,Payments,Alice,Junior,2023-04-05,Afternoon
+17,Agent_17,Technical Support,Brian,Junior,2024-01-03,Afternoon
+18,Agent_18,Customer Success,Cynthia,Senior,2023-09-28,Morning
+19,Agent_19,KYC & Verification,David,Senior,2024-04-15,Night
+20,Agent_20,VIP Support,Eva,Junior,2024-01-23,Morning
+21,Agent_21,Payments,Alice,Senior,2023-10-28,Night
+22,Agent_22,Technical Support,Brian,Senior,2025-06-01,Afternoon
+23,Agent_23,Customer Success,Cynthia,Senior,2023-07-16,Night
+24,Agent_24,KYC & Verification,David,Junior,2023-02-16,Night
+25,Agent_25,VIP Support,Eva,Junior,2025-03-02,Afternoon
