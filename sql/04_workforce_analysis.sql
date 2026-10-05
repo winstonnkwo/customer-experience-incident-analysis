@@ -56,23 +56,24 @@ FROM tickets;
 -- ============================================================
 
 SELECT
-    team,
-
+    a.team,
     COUNT(*) AS ticket_volume,
 
     ROUND(
-        AVG(resolution_time),
+        AVG(t.resolution_time),
         2
     ) AS average_resolution_minutes,
 
     ROUND(
-        SUM(resolution_time) / 60,
+        SUM(t.resolution_time) / 60,
         2
     ) AS workload_hours
 
-FROM tickets
+FROM tickets t
+LEFT JOIN agents a
+    ON t.agent_id = a.agent_id
 
-GROUP BY team
+GROUP BY a.team
 
 ORDER BY workload_hours DESC;
 
@@ -82,31 +83,33 @@ ORDER BY workload_hours DESC;
 -- ============================================================
 
 SELECT
-    agent_id,
-    team,
+    t.agent_id,
+    a.team,
 
     COUNT(*) AS tickets_handled,
 
     ROUND(
-        AVG(resolution_time),
+        AVG(t.resolution_time),
         2
     ) AS average_resolution_minutes,
 
     ROUND(
-        SUM(resolution_time) / 60,
+        SUM(t.resolution_time) / 60,
         2
     ) AS workload_hours,
 
     ROUND(
-        AVG(csat),
+        AVG(t.csat),
         2
     ) AS average_csat
 
-FROM tickets
+FROM tickets t
+LEFT JOIN agents a
+    ON t.agent_id = a.agent_id
 
 GROUP BY
-    agent_id,
-    team
+    t.agent_id,
+    a.team
 
 ORDER BY workload_hours DESC;
 
@@ -116,7 +119,7 @@ ORDER BY workload_hours DESC;
 -- ============================================================
 
 SELECT
-    team,
+    a.team,
     COUNT(*) AS ticket_volume,
 
     ROUND(
@@ -125,9 +128,11 @@ SELECT
         2
     ) AS percentage_of_total_volume
 
-FROM tickets
+FROM tickets t
+LEFT JOIN agents a
+    ON t.agent_id = a.agent_id
 
-GROUP BY team
+GROUP BY a.team
 
 ORDER BY percentage_of_total_volume DESC;
 
@@ -218,24 +223,24 @@ FROM tickets;
 -- ============================================================
 
 SELECT
-
-    team,
-
+    a.team,
     COUNT(*) AS ticket_volume,
 
     ROUND(
-        SUM(resolution_time) / 60,
+        SUM(t.resolution_time) / 60,
         2
     ) AS workload_hours,
 
     ROUND(
-        (SUM(resolution_time) / 60) / 120,
+        (SUM(t.resolution_time) / 60) / 120,
         2
     ) AS estimated_required_fte
 
-FROM tickets
+FROM tickets t
+LEFT JOIN agents a
+    ON t.agent_id = a.agent_id
 
-GROUP BY team
+GROUP BY a.team
 
 ORDER BY estimated_required_fte DESC;
 
@@ -254,19 +259,21 @@ FROM tickets;
 -- ============================================================
 
 SELECT
-    team,
-    COUNT(DISTINCT agent_id) AS active_agents,
+    a.team,
+    COUNT(DISTINCT t.agent_id) AS active_agents,
     COUNT(*) AS ticket_volume,
 
     ROUND(
         COUNT(*) /
-        COUNT(DISTINCT agent_id),
+        COUNT(DISTINCT t.agent_id),
         2
     ) AS tickets_per_agent
 
-FROM tickets
+FROM tickets t
+LEFT JOIN agents a
+    ON t.agent_id = a.agent_id
 
-GROUP BY team
+GROUP BY a.team
 
 ORDER BY tickets_per_agent DESC;
 
@@ -276,26 +283,28 @@ ORDER BY tickets_per_agent DESC;
 -- ============================================================
 
 SELECT
-    agent_id,
-    team,
+    t.agent_id,
+    a.team,
 
     COUNT(*) AS tickets_handled,
 
     ROUND(
-        AVG(csat),
+        AVG(t.csat),
         2
     ) AS average_csat,
 
     ROUND(
-        AVG(resolution_time),
+        AVG(t.resolution_time),
         2
     ) AS average_resolution_minutes
 
-FROM tickets
+FROM tickets t
+LEFT JOIN agents a
+    ON t.agent_id = a.agent_id
 
 GROUP BY
-    agent_id,
-    team
+    t.agent_id,
+    a.team
 
 ORDER BY tickets_handled DESC;
 
