@@ -125,26 +125,28 @@ ORDER BY average_csat ASC;
 -- ============================================================
 
 SELECT
-    team,
+    a.team,
     COUNT(*) AS ticket_volume,
-    ROUND(AVG(csat), 2) AS average_csat,
+    ROUND(AVG(t.csat), 2) AS average_csat,
 
     ROUND(
-        100.0 * SUM(CASE WHEN fcr = 'Yes' THEN 1 ELSE 0 END)
+        100.0 * SUM(CASE WHEN t.fcr = 'Yes' THEN 1 ELSE 0 END)
         / COUNT(*),
         2
     ) AS fcr_percentage,
 
     ROUND(
-        100.0 * SUM(CASE WHEN sla_breached = 'Yes' THEN 1 ELSE 0 END)
+        100.0 * SUM(CASE WHEN t.sla_breached = 'Yes' THEN 1 ELSE 0 END)
         / COUNT(*),
         2
     ) AS sla_breach_percentage,
 
-    ROUND(AVG(resolution_time), 2) AS average_resolution_time
+    ROUND(AVG(t.resolution_time), 2) AS average_resolution_time
 
-FROM tickets
-GROUP BY team
+FROM tickets t
+LEFT JOIN agents a
+    ON t.agent_id = a.agent_id
+GROUP BY a.team
 ORDER BY average_csat ASC;
 
 
@@ -207,7 +209,7 @@ ORDER BY sla_breaches DESC;
 
 
 -- ============================================================
--- 9. REPEAT CONTACT / FCR ANALYSIS BY ISSUE
+-- 9. NON-FCR ANALYSIS BY ISSUE
 -- ============================================================
 
 SELECT
@@ -219,7 +221,7 @@ SELECT
             WHEN fcr = 'No' THEN 1
             ELSE 0
         END
-    ) AS repeat_contacts,
+    ) AS non_fcr_contacts,
 
     ROUND(
         100.0 * SUM(
@@ -229,7 +231,7 @@ SELECT
             END
         ) / COUNT(*),
         2
-    ) AS repeat_contact_percentage
+    ) AS non_fcr_percentage
 
 FROM tickets
 GROUP BY issue_type
