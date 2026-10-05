@@ -235,7 +235,7 @@ SELECT
 
 FROM tickets
 GROUP BY issue_type
-ORDER BY repeat_contacts DESC;
+ORDER BY non_fcr_contacts DESC;
 
 
 -- ============================================================
