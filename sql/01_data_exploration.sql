@@ -212,9 +212,11 @@ FROM tickets;
 
 SELECT
     COUNT(*) AS total_tickets,
-    COUNT(DISTINCT ticket_id) AS unique_ticket_ids,
-    COUNT(DISTINCT agent_id) AS active_agents,
-    COUNT(DISTINCT team) AS teams,
-    COUNT(DISTINCT issue_type) AS issue_types,
-    COUNT(DISTINCT customer_type) AS customer_types
-FROM tickets;
+    COUNT(DISTINCT t.ticket_id) AS unique_ticket_ids,
+    COUNT(DISTINCT t.agent_id) AS active_agents,
+    COUNT(DISTINCT a.team) AS teams,
+    COUNT(DISTINCT t.issue_type) AS issue_types,
+    COUNT(DISTINCT t.customer_type) AS customer_types
+FROM tickets t
+LEFT JOIN agents a
+    ON t.agent_id = a.agent_id;
