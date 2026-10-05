@@ -268,7 +268,7 @@ The dashboard was designed around three executive questions:
 
 **Incident Root Cause**
 
-![Incident Root Cause](powerbi/dashboard_screenshots/02_incident_root_cause.png)
+![Incident Root Cause](powerbi/dashboard_screenshots/02_incident _root_cause.png)
 
 ---
 
