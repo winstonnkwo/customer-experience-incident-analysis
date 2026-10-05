@@ -156,10 +156,12 @@ ORDER BY ticket_volume DESC;
 -- ============================================================
 
 SELECT
-    team,
+    a.team,
     COUNT(*) AS ticket_volume
-FROM tickets
-GROUP BY team
+FROM tickets t
+LEFT JOIN agents a
+    ON t.agent_id = a.agent_id
+GROUP BY a.team
 ORDER BY ticket_volume DESC;
 
 
@@ -197,7 +199,6 @@ SELECT
     SUM(agent_id IS NULL) AS missing_agent_id,
     SUM(issue_type IS NULL) AS missing_issue_type,
     SUM(customer_type IS NULL) AS missing_customer_type,
-    SUM(team IS NULL) AS missing_team,
     SUM(csat IS NULL) AS missing_csat,
     SUM(resolution_time IS NULL) AS missing_resolution_time,
     SUM(fcr IS NULL) AS missing_fcr,
