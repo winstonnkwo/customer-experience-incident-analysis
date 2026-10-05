@@ -194,7 +194,7 @@ ORDER BY sla_breaches DESC;
 
 
 -- ============================================================
--- 8. REPEAT CONTACTS BY ISSUE TYPE
+-- 8. NON-FCR CONTACTS BY ISSUE TYPE
 -- ============================================================
 
 SELECT
@@ -218,7 +218,7 @@ SELECT
             END
         ) / COUNT(*),
         2
-    ) AS non_fcr_contacts
+    ) AS non_fcr_percentage
 
 FROM tickets
 GROUP BY issue_type
@@ -259,27 +259,29 @@ ORDER BY average_csat ASC;
 -- ============================================================
 
 SELECT
-    team,
+    a.team,
     COUNT(*) AS ticket_volume,
-    ROUND(AVG(csat), 2) AS average_csat,
-    ROUND(AVG(resolution_time), 2) AS average_resolution_time,
+    ROUND(AVG(t.csat), 2) AS average_csat,
+    ROUND(AVG(t.resolution_time), 2) AS average_resolution_time,
 
     SUM(
         CASE
-            WHEN fcr = 'No' THEN 1
+            WHEN t.fcr = 'No' THEN 1
             ELSE 0
         END
     ) AS non_fcr_contacts,
 
     SUM(
         CASE
-            WHEN sla_breached = 'Yes' THEN 1
+            WHEN t.sla_breached = 'Yes' THEN 1
             ELSE 0
         END
     ) AS sla_breaches
 
-FROM tickets
-GROUP BY team
+FROM tickets t
+LEFT JOIN agents a
+    ON t.agent_id = a.agent_id
+GROUP BY a.team
 ORDER BY average_csat ASC;
 
 
