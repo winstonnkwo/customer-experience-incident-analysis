@@ -13,7 +13,7 @@ Key investigation areas:
 - Payment success deterioration
 - Issue-level customer impact
 - SLA breaches
-- Repeat contacts
+- Non fcr contacts
 - Customer-type impact
 - Agent/team contribution
 
@@ -117,7 +117,7 @@ SELECT
             WHEN fcr = 'No' THEN 1
             ELSE 0
         END
-    ) AS repeat_contacts,
+    ) AS non_fcr_contacts,
 
     SUM(
         CASE
@@ -145,7 +145,7 @@ SELECT
             WHEN fcr = 'No' THEN 1
             ELSE 0
         END
-    ) AS repeat_contacts,
+    ) AS non_fcr_contacts,
 
     SUM(
         CASE
@@ -207,7 +207,7 @@ SELECT
             WHEN fcr = 'No' THEN 1
             ELSE 0
         END
-    ) AS repeat_contacts,
+    ) AS non_fcr_contacts,
 
     ROUND(
         100.0 *
@@ -218,11 +218,11 @@ SELECT
             END
         ) / COUNT(*),
         2
-    ) AS repeat_contact_rate
+    ) AS non_fcr_contacts
 
 FROM tickets
 GROUP BY issue_type
-ORDER BY repeat_contacts DESC;
+ORDER BY non_fcr_contacts DESC;
 
 
 -- ============================================================
@@ -240,7 +240,7 @@ SELECT
             WHEN fcr = 'No' THEN 1
             ELSE 0
         END
-    ) AS repeat_contacts,
+    ) AS non_fcr_contacts,
 
     SUM(
         CASE
@@ -269,7 +269,7 @@ SELECT
             WHEN fcr = 'No' THEN 1
             ELSE 0
         END
-    ) AS repeat_contacts,
+    ) AS non_fcr_contacts,
 
     SUM(
         CASE
@@ -288,28 +288,31 @@ ORDER BY average_csat ASC;
 -- ============================================================
 
 SELECT
-    agent_id,
-    team,
+    t.agent_id,
+    a.team,
     COUNT(*) AS tickets_handled,
-    ROUND(AVG(csat), 2) AS average_csat,
-    ROUND(AVG(resolution_time), 2) AS average_resolution_time,
+    ROUND(AVG(t.csat), 2) AS average_csat,
+    ROUND(AVG(t.resolution_time), 2) AS average_resolution_time,
 
     SUM(
         CASE
-            WHEN fcr = 'No' THEN 1
+            WHEN t.fcr = 'No' THEN 1
             ELSE 0
         END
-    ) AS repeat_contacts,
+    ) AS non_fcr_contacts,
 
     SUM(
         CASE
-            WHEN sla_breached = 'Yes' THEN 1
+            WHEN t.sla_breached = 'Yes' THEN 1
             ELSE 0
         END
     ) AS sla_breaches
 
-FROM tickets
-GROUP BY agent_id, team
+FROM tickets t
+LEFT JOIN agents a
+    ON t.agent_id = a.agent_id
+
+GROUP BY t.agent_id, a.team
 ORDER BY average_csat ASC;
 
 
