@@ -298,3 +298,41 @@ Workforce Capacity Assessment
 Power BI Executive Dashboard
         ↓
 Management Recommendation
+
+---
+
+# Project Resources
+
+## SQL Analysis
+
+The SQL analysis is organized into four scripts:
+
+- [01 — Data Exploration and Validation](sql/01_data_exploration.sql)
+- [02 — KPI and Operational Performance Analysis](sql/02_kpi_analysis.sql)
+- [03 — Root Cause and Incident Analysis](sql/03_root_cause_analysis.sql)
+- [04 — Workforce Capacity and Recruitment Analysis](sql/04_workforce_analysis.sql)
+
+## Datasets
+
+The project uses six CSV datasets:
+
+- [Customer Support Tickets](data/tickets.csv)
+- [Agent Information](data/agents.csv)
+- [Engineering and Payment Performance](data/engineering.csv)
+- [Quality Assurance Scores](data/qa_scores.csv)
+- [Workforce Capacity](data/workforce.csv)
+- [Marketing Activity](data/marketing.csv)
+
+## Detailed Case Study
+
+Read the [full Customer Experience Incident Analysis case study](documentation/case-study.md) for the detailed investigation, supporting evidence, workforce decision, and recovery recommendations.
+
+## Tools and Skills
+
+- **SQL / MySQL:** Data validation, KPI calculations, trend analysis, segmentation, root-cause investigation, and workforce analysis.
+- **Power BI:** Executive dashboards, KPI cards, trend visualization, issue-type analysis, and agent performance analysis.
+- **DAX:** Measures for CSAT, FCR, SLA breaches, ticket volume, resolution time, and payment success.
+
+## Project Outcome
+
+The analysis supports stabilizing the payment/API incident before committing to permanent recruitment. The July 19 event is the most likely trigger based on the available evidence, but definitive causation requires timestamped technical and payment-provider logs.
