@@ -102,7 +102,7 @@ It recorded approximately:
 
 - **2.06 average CSAT**
 - **64 SLA breaches**
-- **128 repeat contacts**
+- **128 non-FCR contacts**
 
 This made Payment Failure the highest-priority operational issue from a customer-experience perspective.
 
