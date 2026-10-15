@@ -305,34 +305,26 @@ Management Recommendation
 
 ## SQL Analysis
 
-The SQL analysis is organized into four scripts:
-
-- [01 — Data Exploration and Validation](sql/01_data_exploration.sql)
-- [02 — KPI and Operational Performance Analysis](sql/02_kpi_analysis.sql)
-- [03 — Root Cause and Incident Analysis](sql/03_root_cause_analysis.sql)
-- [04 — Workforce Capacity and Recruitment Analysis](sql/04_workforce_analysis.sql)
+- [01 — Data Exploration and Validation](https://github.com/winstonnkwo/customer-experience-incident-analysis/blob/main/sql/01_data_exploration.sql)
+- [02 — KPI and Operational Performance Analysis](https://github.com/winstonnkwo/customer-experience-incident-analysis/blob/main/sql/02_kpi_analysis.sql)
+- [03 — Root Cause and Incident Analysis](https://github.com/winstonnkwo/customer-experience-incident-analysis/blob/main/sql/03_root_cause_analysis.sql)
+- [04 — Workforce Capacity and Recruitment Analysis](https://github.com/winstonnkwo/customer-experience-incident-analysis/blob/main/sql/04_workforce_analysis.sql)
 
 ## Datasets
 
-The project uses six CSV datasets:
-
-- [Customer Support Tickets](data/tickets.csv)
-- [Agent Information](data/agents.csv)
-- [Engineering and Payment Performance](data/engineering.csv)
-- [Quality Assurance Scores](data/qa_scores.csv)
-- [Workforce Capacity](data/workforce.csv)
-- [Marketing Activity](data/marketing.csv)
+- [Customer Support Tickets](https://github.com/winstonnkwo/customer-experience-incident-analysis/blob/main/data/tickets.csv)
+- [Agent Information](https://github.com/winstonnkwo/customer-experience-incident-analysis/blob/main/data/agents.csv)
+- [Engineering and Payment Performance](https://github.com/winstonnkwo/customer-experience-incident-analysis/blob/main/data/engineering.csv)
+- [Quality Assurance Scores](https://github.com/winstonnkwo/customer-experience-incident-analysis/blob/main/data/qa_scores.csv)
+- [Workforce Capacity](https://github.com/winstonnkwo/customer-experience-incident-analysis/blob/main/data/workforce.csv)
+- [Marketing Activity](https://github.com/winstonnkwo/customer-experience-incident-analysis/blob/main/data/marketing.csv)
 
 ## Detailed Case Study
 
-Read the [full Customer Experience Incident Analysis case study](documentation/case-study.md) for the detailed investigation, supporting evidence, workforce decision, and recovery recommendations.
+[Read the full Customer Experience Incident Analysis case study](https://github.com/winstonnkwo/customer-experience-incident-analysis/blob/main/documentation/case-study.md)
 
 ## Tools and Skills
 
 - **SQL / MySQL:** Data validation, KPI calculations, trend analysis, segmentation, root-cause investigation, and workforce analysis.
 - **Power BI:** Executive dashboards, KPI cards, trend visualization, issue-type analysis, and agent performance analysis.
 - **DAX:** Measures for CSAT, FCR, SLA breaches, ticket volume, resolution time, and payment success.
-
-## Project Outcome
-
-The analysis supports stabilizing the payment/API incident before committing to permanent recruitment. The July 19 event is the most likely trigger based on the available evidence, but definitive causation requires timestamped technical and payment-provider logs.
