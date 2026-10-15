@@ -279,25 +279,25 @@ The dashboard was designed around three executive questions:
 ![Executive Recommendations](powerbi/dashboard_screenshots/03_executive_recommendations.png)
 
 ---
-
 # Analytical Workflow
 
 ```text
 Raw Operational Data
-        ↓
+       ↓
 Data Exploration & Validation
-        ↓
+       ↓
 KPI Analysis
-        ↓
+       ↓
 Trend & Segmentation Analysis
-        ↓
+       ↓
 Root Cause Investigation
-        ↓
+       ↓
 Workforce Capacity Assessment
-        ↓
+       ↓
 Power BI Executive Dashboard
-        ↓
+       ↓
 Management Recommendation
+```
 
 ---
 
