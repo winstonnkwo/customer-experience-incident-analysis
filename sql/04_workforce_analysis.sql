@@ -250,8 +250,8 @@ ORDER BY estimated_required_fte DESC;
 -- ============================================================
 
 SELECT
-    COUNT(DISTINCT agent_id) AS active_agents
-FROM tickets;
+    COUNT(DISTINCT agent_id) AS total_agents
+FROM agents;
 
 
 -- ============================================================
